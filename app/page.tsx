@@ -12,7 +12,7 @@ export default function Home() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  const SHEET_URL = https://script.google.com/macros/s/AKfycbz_WCQCsn22F9v3DHLzzWtN74VdUeHuoNt2b2sCKXQ5KKcXfozgfTSgfzOpl9Xw7Ns/exec;
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbz_WCQCsn22F9v3DHLzzWtN74VdUeHuoNt2b2sCKXQ5KKcXfozgfTSgfzOpl9Xw7Ns/exec";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
