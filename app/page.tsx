@@ -19,19 +19,17 @@ export default function Home() {
     setLoading(true);
     setError("");
     try {
-      const formBody = new URLSearchParams();
-      formBody.append("name", formData.name);
-      formBody.append("phone", formData.phone);
-      formBody.append("email", formData.email);
-      formBody.append("message", formData.message);
-
-      await fetch(SHEET_URL, {
+      const res = await fetch("/api/leads", {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formBody.toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-      setSuccess(true);
+      const data = await res.json();
+      if (data.success) {
+        setSuccess(true);
+      } else {
+        setError("حدث خطأ، حاول مرة أخرى");
+      }
     } catch {
       setError("حدث خطأ، حاول مرة أخرى");
     } finally {
