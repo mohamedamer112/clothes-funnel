@@ -19,11 +19,17 @@ export default function Home() {
     setLoading(true);
     setError("");
     try {
+      const formBody = new URLSearchParams();
+      formBody.append("name", formData.name);
+      formBody.append("phone", formData.phone);
+      formBody.append("email", formData.email);
+      formBody.append("message", formData.message);
+
       await fetch(SHEET_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formBody.toString(),
       });
       setSuccess(true);
     } catch {
